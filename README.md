@@ -1,2 +1,5 @@
 # idle-game
-Fantasy idle game in HTML
+Fantasy RPG idle game in HTML/JS
+
+# TODO
+- ffff
