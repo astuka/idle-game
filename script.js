@@ -2,6 +2,9 @@ let XP = 0;
 let XPPerSecond = 1;
 let upgradeCost = 10;
 
+let max_XP = 100;
+let level = 1;
+
 const XPElement = document.getElementById('XP');
 const XPPerSecondElement = document.getElementById('XPPerSecond');
 const upgradeButton = document.getElementById('upgradeButton');
