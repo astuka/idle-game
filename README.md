@@ -2,6 +2,6 @@
 Fantasy RPG idle game in HTML/JS
 
 # TODO
-- add level up function
-- add gold counter
-- show level, max xp, and gold on page
+- round numbers so they don't have the .0 
+- gold shop
+- event log
