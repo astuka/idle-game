@@ -45,7 +45,7 @@ function level_up(){
     if (XP >= max_XP){
         level += 1;
         XP = 0;
-        max_XP += 10; //change this to exponential
+        max_XP *= 2;
         GoldPerSecond += 1;
     }
 }
