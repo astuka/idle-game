@@ -1,12 +1,16 @@
+
+//initialize variables
 let XP = 0;
 let XPPerSecond = 1;
 let Gold = 0;
 let GoldPerSecond = 0;
 let upgradeCost = 10;
-
+let shopCost = 10;
 let max_XP = 10;
 let level = 1;
 
+
+//initialize UI
 const XPElement = document.getElementById('XP');
 const XPPerSecondElement = document.getElementById('XPPerSecond');
 const max_XPElement = document.getElementById('max_XP');
@@ -14,7 +18,10 @@ const GoldElement = document.getElementById('Gold');
 const GoldPerSecondElement = document.getElementById('GoldPerSecond');
 const levelElement = document.getElementById('level');
 const upgradeButton = document.getElementById('upgradeButton');
+const shopButton = document.getElementById('shopButton');
 
+
+//updater
 function updateDisplay() {
     XPElement.textContent = XP.toFixed(1);
     XPPerSecondElement.textContent = XPPerSecond.toFixed(1);
@@ -23,6 +30,7 @@ function updateDisplay() {
     GoldElement.textContent = Gold.toFixed(1);
     GoldPerSecondElement.textContent = GoldPerSecond.toFixed(1);
     upgradeButton.textContent = `Practice (Cost: ${upgradeCost} XP)`;
+    shopButton.textContent = `Bronze Sword (Cost: ${shopCost} Gold)`;
 }
 
 function idleUpdate() {
@@ -41,6 +49,10 @@ function upgrade() {
     }
 }
 
+function shop(){
+    //same as upgrade, but get stats
+}
+
 function level_up(){
     if (XP >= max_XP){
         level += 1;
@@ -52,5 +64,6 @@ function level_up(){
 
 setInterval(idleUpdate, 1000);
 upgradeButton.addEventListener('click', upgrade);
+shopButton.addEventListener('click', shop);
 
 updateDisplay();
