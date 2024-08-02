@@ -23,6 +23,8 @@ const attackElement = document.getElementById('attack');
 const defenseElement = document.getElementById('defense');
 const upgradeButton = document.getElementById('upgradeButton');
 const shopButton = document.getElementById('shopButton');
+const fightButton = document.getElementById('fightButton');
+
 
 
 //updater
@@ -37,6 +39,7 @@ function updateDisplay() {
     GoldPerSecondElement.textContent = GoldPerSecond.toFixed(1);
     upgradeButton.textContent = `Practice (Cost: ${upgradeCost} XP)`;
     shopButton.textContent = `Bronze Sword (Cost: ${shopCost} Gold)`;
+    fightButton.textContent = `Fight!`;
 }
 
 //idle changes
@@ -66,6 +69,11 @@ function shop(){
     }
 }
 
+
+function fight(){
+    //logic for the roll fight system
+}
+
 function level_up(){
     if (XP >= max_XP){
         level += 1;
@@ -78,5 +86,7 @@ function level_up(){
 setInterval(idleUpdate, 1000);
 upgradeButton.addEventListener('click', upgrade);
 shopButton.addEventListener('click', shop);
+fightButton.addEventListener('click', fight);
+
 
 updateDisplay();
