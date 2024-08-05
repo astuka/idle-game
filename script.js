@@ -11,6 +11,8 @@ let level = 1;
 let attack = 1;
 let defense = 1;
 
+let ene_attack = 1;
+let ene_def = 1;
 
 //initialize UI
 const XPElement = document.getElementById('XP');
@@ -24,6 +26,7 @@ const defenseElement = document.getElementById('defense');
 const upgradeButton = document.getElementById('upgradeButton');
 const shopButton = document.getElementById('shopButton');
 const fightButton = document.getElementById('fightButton');
+const fightResults = document.getElementById('fightResults');
 
 
 
@@ -72,6 +75,17 @@ function shop(){
 
 function fight(){
     //logic for the roll fight system
+    player_dmg = (Math.random() * (attack+1)) - (Math.random() * (ene_def+1));
+    ene_dmg = (Math.random() * (ene_attack+1)) - (Math.random() * (defense+1));
+    console.log(player_dmg)
+    console.log(ene_dmg)
+    if (player_dmg > ene_dmg){
+        fightResults.textContent = `You won!`;
+        ene_attack *= 2;
+        ene_def *= 2;
+    } else {
+        fightResults.textContent = `You lost!`;
+    }
 }
 
 function level_up(){
