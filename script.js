@@ -75,11 +75,11 @@ function shop(){
 
 function fight(){
     //logic for the roll fight system
-    player_dmg = (Math.random() * (attack+1)) - (Math.random() * (ene_def+1));
-    ene_dmg = (Math.random() * (ene_attack+1)) - (Math.random() * (defense+1));
+    player_dmg = Math.max((Math.random() * (attack+1)) - (Math.random() * (ene_def+1)),0);
+    ene_dmg = Math.max((Math.random() * (ene_attack+1)) - (Math.random() * (defense+1)),0);
     console.log(player_dmg)
     console.log(ene_dmg)
-    if (player_dmg > ene_dmg){
+    if (player_dmg >= ene_dmg){
         fightResults.textContent = `You won!`;
         ene_attack *= 2;
         ene_def *= 2;
