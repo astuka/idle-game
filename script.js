@@ -5,7 +5,8 @@ let XPPerSecond = 1;
 let Gold = 0;
 let GoldPerSecond = 0;
 let upgradeCost = 10;
-let shopCost = 10;
+let shopatkCost = 10;
+let shopdefCost = 10;
 let max_XP = 10;
 let level = 1;
 let attack = 1;
@@ -24,7 +25,8 @@ const levelElement = document.getElementById('level');
 const attackElement = document.getElementById('attack');
 const defenseElement = document.getElementById('defense');
 const upgradeButton = document.getElementById('upgradeButton');
-const shopButton = document.getElementById('shopButton');
+const shopatkButton = document.getElementById('shopatkButton');
+const shopdefButton = document.getElementById('shopdefButton');
 const fightButton = document.getElementById('fightButton');
 const fightResults = document.getElementById('fightResults');
 
@@ -41,7 +43,8 @@ function updateDisplay() {
     GoldElement.textContent = Gold.toFixed(1);
     GoldPerSecondElement.textContent = GoldPerSecond.toFixed(1);
     upgradeButton.textContent = `Practice (Cost: ${upgradeCost} XP)`;
-    shopButton.textContent = `Bronze Sword (Cost: ${shopCost} Gold)`;
+    shopatkButton.textContent = `Upgrade Sword (Cost: ${shopatkCost} Gold)`;
+    shopdefButton.textContent = `Upgrade Armor (Cost: ${shopdefCost} Gold)`;
     fightButton.textContent = `Fight!`;
 }
 
@@ -62,12 +65,22 @@ function upgrade() {
     }
 }
 
-function shop(){
+function shop_atk(){
     //same as upgrade, but get stats
-    if (Gold >= shopCost) {
-        Gold -= shopCost;
-        attack += 1;
-        shopCost *= 2;
+    if (Gold >= shopatkCost) {
+        Gold -= shopatkCost;
+        attack *= 2;
+        shopatkCost *= 2;
+        updateDisplay();
+    }
+}
+
+function shop_def(){
+    //same as upgrade, but get stats
+    if (Gold >= shopdefCost) {
+        Gold -= shopdefCost;
+        defense *= 2;
+        shopdefCost *= 2;
         updateDisplay();
     }
 }
@@ -80,11 +93,16 @@ function fight(){
     console.log(player_dmg)
     console.log(ene_dmg)
     if (player_dmg >= ene_dmg){
-        fightResults.textContent = `You won!`;
+        fightResults.textContent = `Player: ${player_dmg} vs Enemy: ${ene_dmg} ... You won!`;
+        XPPerSecond *= 2
+        GoldPerSecond *= 2
         ene_attack *= 2;
         ene_def *= 2;
     } else {
-        fightResults.textContent = `You lost!`;
+        fightResults.textContent = `Player: ${player_dmg} vs Enemy: ${ene_dmg} ... You lost!`;
+
+        XP = 0;
+        Gold = 0;
     }
 }
 
@@ -99,7 +117,8 @@ function level_up(){
 
 setInterval(idleUpdate, 1000);
 upgradeButton.addEventListener('click', upgrade);
-shopButton.addEventListener('click', shop);
+shopatkButton.addEventListener('click', shop_atk);
+shopdefButton.addEventListener('click', shop_def);
 fightButton.addEventListener('click', fight);
 
 
